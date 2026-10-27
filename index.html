@@ -1,0 +1,615 @@
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10070b">
+<title>Наш особенный вечер ❤️</title>
+
+<style>
+/* ===== ОСНОВНЫЕ ЦВЕТА САЙТА ===== */
+:root {
+    --background: #10070b;
+    --card: #241019;
+    --red: #e52b50;
+    --pink: #ff7894;
+    --gold: #e8c3a9;
+    --white: #fff3ed;
+    --muted: #c9aeb6;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: radial-gradient(
+        ellipse at top,
+        #451322 0%,
+        #1b0b11 45%,
+        var(--background) 100%
+    );
+    color: var(--white);
+    font-family: Georgia, "Times New Roman", serif;
+    min-height: 100vh;
+}
+
+/* ===== АНИМИРОВАННЫЕ СЕРДЕЧКИ ===== */
+
+.hearts {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hearts span {
+    position: absolute;
+    bottom: -30px;
+    color: var(--pink);
+    opacity: 0;
+    animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.4;
+    }
+
+    85% {
+        opacity: 0.2;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(35deg);
+        opacity: 0;
+    }
+}
+
+header,
+main,
+footer {
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== ПЕРВАЯ СТРАНИЦА ===== */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.kicker {
+    color: var(--gold);
+    font: 11px Arial, sans-serif;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    line-height: 1.8;
+}
+
+.heart {
+    font-size: 35px;
+    color: var(--pink);
+    margin: 25px 0;
+    animation: pulse 1.7s infinite;
+    text-shadow: 0 0 20px var(--red);
+}
+
+@keyframes pulse {
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+h1 {
+    font-size: clamp(45px, 9vw, 80px);
+    font-weight: normal;
+    line-height: 1;
+    margin: 0;
+}
+
+h1 em {
+    color: var(--pink);
+    font-weight: normal;
+}
+
+.intro {
+    max-width: 430px;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.9;
+    margin: 25px 0 30px;
+}
+
+/* ===== КНОПКИ ===== */
+
+.btn {
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #ff5376, #bd173c);
+    color: white;
+    padding: 15px 25px;
+    cursor: pointer;
+    font-size: 15px;
+    box-shadow: 0 10px 30px #e52b5038;
+    transition: 0.25s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 13px 35px #e52b5055;
+}
+
+/* ===== МЕНЮ ===== */
+
+main {
+    max-width: 1000px;
+    margin: auto;
+    padding: 30px 20px 70px;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+h2 {
+    font-size: clamp(32px, 6vw, 46px);
+    font-weight: normal;
+    margin: 15px 0;
+}
+
+.description {
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 500px;
+    margin: auto;
+}
+
+.menu {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.dish {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(150deg, #30121e, #170a10);
+    border: 1px solid #6e263b;
+    border-radius: 22px;
+    padding: 25px 20px;
+    min-height: 290px;
+    transition: 0.25s;
+}
+
+.dish:hover {
+    transform: translateY(-5px);
+    border-color: var(--pink);
+}
+
+.dish-number {
+    font: 10px Arial, sans-serif;
+    letter-spacing: 2px;
+    color: var(--gold);
+}
+
+.dish-icon {
+    font-size: 43px;
+    margin: 25px 0 15px;
+}
+
+.dish h3 {
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 1.2;
+    margin: 0 0 12px;
+}
+
+.dish p {
+    color: var(--muted);
+    font: 13px/1.8 Arial, sans-serif;
+    margin: 0 0 20px;
+}
+
+.dish-tag {
+    margin-top: auto;
+    color: var(--gold);
+    font: 10px Arial, sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* ===== РОМАНТИЧЕСКАЯ ЦИТАТА ===== */
+
+.quote {
+    text-align: center;
+    border-top: 1px solid #67273b;
+    border-bottom: 1px solid #67273b;
+    margin-top: 35px;
+    padding: 30px 10px;
+    color: #f2c4ce;
+    font-size: 20px;
+    line-height: 1.8;
+}
+
+.quote small {
+    display: block;
+    color: var(--muted);
+    font: 11px Arial, sans-serif;
+    letter-spacing: 2px;
+    margin-top: 10px;
+}
+
+/* ===== СЮРПРИЗ ===== */
+
+.surprise {
+    text-align: center;
+    margin: 40px 0 10px;
+}
+
+.surprise p {
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 25px 20px 45px;
+    color: #9b7d87;
+    font: 12px/1.8 Arial, sans-serif;
+}
+
+footer span {
+    display: block;
+    color: var(--pink);
+    font-size: 22px;
+}
+
+/* ===== ВСПЛЫВАЮЩЕЕ ПОСЛАНИЕ ===== */
+
+.modal-bg {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 5;
+    background: #070206e8;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-bg.open {
+    display: flex;
+}
+
+.modal {
+    width: 100%;
+    max-width: 430px;
+    text-align: center;
+    background: #210e17;
+    border: 1px solid #a63a56;
+    border-radius: 25px;
+    padding: 30px 25px;
+    box-shadow: 0 20px 70px #0009;
+    animation: appear 0.3s ease-out;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-icon {
+    font-size: 42px;
+}
+
+.modal h2 {
+    font-size: 31px;
+}
+
+.modal p {
+    color: var(--muted);
+    line-height: 1.9;
+}
+
+@media (max-width: 700px) {
+    .menu {
+        grid-template-columns: 1fr;
+    }
+
+    .dish {
+        min-height: 250px;
+    }
+
+    .hero {
+        min-height: 90vh;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Сердечки создаются автоматически -->
+<div class="hearts" id="hearts"></div>
+
+<!-- ПЕРВЫЙ ЭКРАН -->
+<header class="hero">
+
+    <div class="kicker">
+        Вечер, который хочется запомнить
+    </div>
+
+    <div class="heart">♥</div>
+
+    <h1>
+        Наш<br>
+        <em>особенный вечер</em>
+    </h1>
+
+    <p class="intro">
+        Немного пузырьков, что-то вкусное
+        и сладкое напоследок.<br>
+        А главное — этот вечер мы делим на двоих. ❤️
+    </p>
+
+    <button class="btn" id="openMenu">
+        Посмотреть меню ↓
+    </button>
+
+</header>
+
+<!-- ОСНОВНОЕ МЕНЮ -->
+<main id="menu">
+
+    <section class="section-heading">
+
+        <div class="kicker">
+            Меню для особенного вечера
+        </div>
+
+        <h2>Сегодня подаётся...</h2>
+
+        <p class="description">
+            Всего три маленьких удовольствия.
+            Потому что для прекрасного вечера
+            не нужно ничего лишнего.
+        </p>
+
+    </section>
+
+    <section class="menu">
+
+        <!-- БЛЮДО №1 -->
+        <article class="dish">
+
+            <div class="dish-number">
+                01 / НАЧАЛО
+            </div>
+
+            <div class="dish-icon">🍣</div>
+
+            <h3>Запечённые роллы</h3>
+
+            <p>
+                Тёплые, нежные и созданные для того,
+                чтобы наслаждаться каждым кусочком.
+            </p>
+
+            <div class="dish-tag">
+                Тёплое · Нежное · Вкусное
+            </div>
+
+        </article>
+
+        <!-- БЛЮДО №2 -->
+        <article class="dish">
+
+            <div class="dish-number">
+                02 / ЗА МОМЕНТ
+            </div>
+
+            <div class="dish-icon">🥂</div>
+
+            <h3>Шампанское</h3>
+
+            <p>
+                Лёгкий звон бокалов, искрящиеся
+                пузырьки и повод загадать желание.
+            </p>
+
+            <div class="dish-tag">
+                Искристое · Праздничное
+            </div>
+
+        </article>
+
+        <!-- БЛЮДО №3 -->
+        <article class="dish">
+
+            <div class="dish-number">
+                03 / СЛАДКОЕ ЗАВЕРШЕНИЕ
+            </div>
+
+            <div class="dish-icon">🍓</div>
+
+            <h3>Клубника в шоколаде</h3>
+
+            <p>
+                Сочная ягода под тонким шоколадным
+                покрытием. Сладкая точка этого вечера.
+            </p>
+
+            <div class="dish-tag">
+                Сладкое · Нежное · Для двоих
+            </div>
+
+        </article>
+
+    </section>
+
+    <!-- ЦИТАТА -->
+    <section class="quote">
+        «Лучшие вечера — не про идеальный план,<br>
+        а про человека рядом».
+
+        <small>
+            И я рад, что рядом будешь ты ❤️
+        </small>
+    </section>
+
+    <!-- ИНТЕРАКТИВНАЯ КНОПКА -->
+    <section class="surprise">
+
+        <p>
+            У меня есть маленький секрет.<br>
+            Но его можно открыть только нажатием кнопки.
+        </p>
+
+        <button class="btn" id="surpriseButton">
+            Открыть маленький секрет 💌
+        </button>
+
+    </section>
+
+</main>
+
+<footer>
+    <span>♥</span>
+    Подготовлено с любовью.<br>
+    Приятного нам вечера.
+</footer>
+
+<!-- ВСПЛЫВАЮЩЕЕ ПОСЛАНИЕ -->
+<div class="modal-bg" id="modal"
+     role="dialog" aria-modal="true"
+     aria-labelledby="modalTitle">
+
+    <div class="modal">
+
+        <div class="modal-icon">💌</div>
+
+        <h2 id="modalTitle">
+            Самое главное — не в меню
+        </h2>
+
+        <p>
+            Можно выбрать роллы, налить шампанское
+            и поделить клубнику пополам…
+
+            Но мой любимый ингредиент этого вечера — ты. ❤️
+        </p>
+
+        <button class="btn" id="closeModal">
+            Обнять этот момент ♥
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+/* Плавная прокрутка к меню */
+
+document.getElementById("openMenu").addEventListener("click", function () {
+    document.getElementById("menu").scrollIntoView({
+        behavior: "smooth"
+    });
+});
+
+/* Открытие романтического послания */
+
+const modal = document.getElementById("modal");
+
+document.getElementById("surpriseButton").addEventListener("click", function () {
+    modal.classList.add("open");
+    document.getElementById("closeModal").focus();
+});
+
+/* Закрытие послания */
+
+document.getElementById("closeModal").addEventListener("click", function () {
+    modal.classList.remove("open");
+});
+
+modal.addEventListener("click", function (event) {
+    if (event.target === modal) {
+        modal.classList.remove("open");
+    }
+});
+
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+        modal.classList.remove("open");
+    }
+});
+
+/* Создание парящих сердечек */
+
+const hearts = document.getElementById("hearts");
+
+for (let i = 0; i < 18; i++) {
+
+    const heart = document.createElement("span");
+
+    heart.textContent = Math.random() > 0.5 ? "♥" : "✦";
+
+    heart.style.left = Math.random() * 100 + "%";
+
+    heart.style.animationDuration =
+        (11 + Math.random() * 14) + "s";
+
+    heart.style.animationDelay =
+        (-Math.random() * 22) + "s";
+
+    heart.style.fontSize =
+        (10 + Math.random() * 15) + "px";
+
+    hearts.appendChild(heart);
+}
+
+</script>
+
+</body>
+</html>
+```
